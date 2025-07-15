@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Contact Stem Sphere for queries and support" />
+    <meta name="author" content="Stem Sphere" />
+    <link
+      rel="icon"
+      href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_new-w6KEs6cSM0d52sz3yBrPNNPgx59M49.png"
+      type="image/png"
+    />
+    <title>Contact Us | Stem Sphere</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      :root {
+        --primary: #8b1d3d;
+        --secondary: #1e2833;
+        --accent: #ffd2dd;
+        --text: #333333;
+        --background: #ffffff;
+        --transition: all 0.3s ease-in-out;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        min-height: 100vh;
+        padding: 0;
+        line-height: 1.6;
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      header {
+        background-color: var(--background);
+        padding: 0.5rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.8s ease-in-out;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0.5rem 1rem;
+      }
+
+      .logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_new-w6KEs6cSM0d52sz3yBrPNNPgx59M49.png");
+        background-size: cover;
+        transition: var(--transition);
+        animation: bounce 2s infinite;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      .login-btn {
+        padding: 0.4rem 1.2rem;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .login-btn:hover {
+        background-color: #6d1730;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(139, 29, 61, 0.2);
+        animation: pulse 0.5s ease-in-out;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: var(--primary);
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+      }
+
+      .hamburger span:nth-child(1) {
+        top: 0px;
+      }
+
+      .hamburger span:nth-child(2) {
+        top: 8px;
+      }
+
+      .hamburger span:nth-child(3) {
+        top: 16px;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        top: 8px;
+        transform: rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        top: 8px;
+        transform: rotate(-45deg);
+      }
+
+      .mobile-login {
+        display: none;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        background: var(--background);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .contact-info {
+        width: 40%;
+        background: linear-gradient(rgba(27, 20, 45, 0.9), rgba(27, 20, 45, 0.9)),
+          url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center;
+        background-size: cover;
+        color: var(--background);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-info::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(139, 29, 61, 0.2) 0%, rgba(30, 40, 51, 0.5) 70%);
+        animation: rotate 10s linear infinite;
+        z-index: 0;
+      }
+
+      .contact-info > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .contact-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-info p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .contact-info .icon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .contact-info .icon i {
+        color: var(--background);
+      }
+
+      .contact-form {
+        width: 60%;
+        padding: 2rem;
+        background: var(--background);
+      }
+
+      .contact-form h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--text);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+        font-size: 0.9rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(139, 29, 61, 0.1);
+      }
+
+      .form-group input:user-invalid,
+      .form-group select:user-invalid,
+      .form-group textarea:user-invalid {
+        border-color: #ff3333;
+      }
+
+      .form-group input:valid,
+      .form-group select:valid,
+      .form-group textarea:valid {
+        border-color: #28a745;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .form-group textarea {
+        height: 100px;
+        resize: none;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .submit-btn:hover {
+        background-color: #541124;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .desktop-login {
+          display: none;
+        }
+
+        .mobile-login {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: white;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          gap: 2rem;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links a {
+          font-size: 1.2rem;
+        }
+
+        .contact-wrapper {
+          flex-direction: column;
+          width: 95%;
+        }
+
+        .contact-info,
+        .contact-form {
+          width: 100%;
+        }
+
+        .contact-info {
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .contact-form h2 {
+          font-size: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          font-size: 0.9rem;
+        }
+
+        .submit-btn {
+          font-size: 0.9rem;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 10px rgba(139, 29, 61, 0.2);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0 0 20px rgba(139, 29, 61, 0.4);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 10px rgba(139, 29, 61, 0.2);
+        }
+      }
+
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="/" class="home">Home</a></li>
+                <li><a href="/about" class="about">About Us</a></li>
+                <li><a href="/faq" class="faq">FAQ</a></li>
+                <li><a href="/contact" class="active">Contact Us</a></li>
+                <li><a href="/login" class="mobile-login"><button class="login-btn">Log In</button></a></li>
+            </ul>
+            <a href="/login" class="desktop-login"><button class="login-btn">Log In</button></a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h3>Address</h3>
+            <p>Meghnad Saha Institute Of Technology, Nazirabad, Kolkata 700150, South 24 Parganas, India</p>
+            <div class="icon">
+                <i>📞</i>
+                <div>
+                    <h3>Let's Talk</h3>
+                    <p><a href="tel:+917882332848">+91 78823 32848</a></p>
+                </div>
+            </div>
+            <div class="icon">
+                <i>📧</i>
+                <div>
+                    <h3>General Support</h3>
+                    <p><a href="mailto:contact@example.com" style="color: var(--background);">contact@example.com</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h2>Send Us A Message</h2>
+            <form id="contactForm" novalidate>
+                <input type="hidden" name="access_key" value="d9c83a9f-0a86-47f4-88ee-fc5c8ada540e" />
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="First Name"
+                            required
+                            pattern="[A-Za-z]{2,}"
+                            title="Please enter at least 2 letters"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Last Name"
+                            required
+                            pattern="[A-Za-z]{2,}"
+                            title="Please enter at least 2 letters"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+91 12345 67890"
+                        required
+                        pattern="\+?[0-9]{10,14}"
+                        title="Please enter a valid phone number (e.g., +911234567890)"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Contact *</label>
+                    <select id="reason" name="reason" required>
+                        <option value="" disabled selected>Choose your reason for contacting us</option>
+                        <option value="support">Donation Related Query</option>
+                        <option value="availability">Stem Cells Availability Query</option>
+                        <option value="work">Work Related Query</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write us a message"
+                        required
+                        minlength="10"
+                    ></textarea>
+                </div>
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const form = this;
+            if (!form.checkValidity()) {
+                alert("Please fill in all required fields correctly.");
+                form.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert("Message Sent Successfully!");
+                    form.reset();
+                } else {
+                    alert("Error sending message: " + (result.message || "Please try again."));
+                }
+            } catch (error) {
+                console.error("Submission error:", error);
+                alert("An error occurred. Please try again later.");
+            }
+        });
+
+        // Hamburger menu functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener("click", function() {
+                    hamburger.classList.toggle("active");
+                    navLinks.classList.toggle("active");
+                    document.body.classList.toggle("menu-open");
+                });
+
+                // Close menu when clicking a link
+                navLinks.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", function() {
+                        hamburger.classList.remove("active");
+                        navLinks.classList.remove("active");
+                        document.body.classList.remove("menu-open");
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener("click", function(e) {
+                    if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains("active")) {
+                        hamburger.classList.remove("active");
+                        navLinks.classList.remove("active");
+                        document.body.classList.remove("menu-open");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

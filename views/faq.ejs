@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stem Cell Transplantation FAQs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #8b1d3d;
+            --secondary: #1e2833;
+            --accent: #ffd2dd;
+            --text: #333333;
+            --background: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--background);
+            padding: 0.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-in-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0.5rem 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_new-w6KEs6cSM0d52sz3yBrPNNPgx59M49.png");
+            background-size: cover;
+            transition: var(--transition);
+            animation: bounce 2s infinite;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            padding: 0.4rem 1.2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .login-btn:hover {
+            background-color: #6d1730;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(139, 29, 61, 0.2);
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 8px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+
+        .mobile-login {
+            display: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, #fff, #f5f5f5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: #5f6368;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 0.5rem;
+            color: #5f6368;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: .4s;
+        }
+
+        .sidebar li a:hover {
+            background: #f1f3f4;
+            color: var(--primary);
+        }
+
+        .faq-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .faq-section h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        details {
+            border-bottom: 1px solid #e8eaed;
+            padding: 1rem 0;
+        }
+
+        summary {
+            font-size: 1.1rem;
+            color: #202124;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: margin 0.3s ease;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #2c5282;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary {
+            margin-bottom: 0.5rem;
+        }
+
+        details[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        details p {
+            color: #5f6368;
+            line-height: 1.5;
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] p {
+            max-height: 1000px;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                justify-content: center;
+                padding: 4rem;
+            }
+
+            .container {
+                grid-template-columns: 250px 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .desktop-login {
+                display: none;
+            }
+
+            .mobile-login {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .sidebar {
+                display: block;
+                margin-bottom: 2rem;
+            }
+
+            .faq-section {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(139, 29, 61, 0.2);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(139, 29, 61, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(139, 29, 61, 0.2);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="/" class="home">Home</a></li>
+                <li><a href="/about" class="about">About Us</a></li>
+                <li><a href="/faq" class="active">FAQ</a></li>
+                <li><a href="/contact" class="contact">Contact Us</a></li>
+                <li><a href="/login" class="mobile-login"><button class="login-btn">Log In</button></a></li>
+            </ul>
+            <a href="/login" class="desktop-login"><button class="login-btn">Log In</button></a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Frequently Asked Questions (FAQs)</h1>
+            <p>Find answers to commonly asked questions about stem cell transplantation procedures, recovery, and
+                aftercare. Our comprehensive guide helps patients understand the process better.</p>
+        </div>
+        <img src="https://t4.ftcdn.net/jpg/03/16/98/41/360_F_316984195_xzyP9XlNL9kIIsAbgBciJrBiW0V7ChC0.jpg"
+            class="hero-image">
+    </section>
+
+    <main class="container">
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#">About Stem Cells</a></li>
+                <li><a href="#">Treatment Process</a></li>
+                <li><a href="#">Recovery & Aftercare</a></li>
+                <li><a href="#">Cost & Insurance</a></li>
+                <li><a href="#">Research & Studies</a></li>
+            </ul>
+        </aside>
+
+        <div class="faq-section">
+            <h2>About Stem Cell Transplantation</h2>
+
+            <details>
+                <summary>What is stem cell transplantation?</summary>
+                <p>Stem cell transplantation is a medical procedure where healthy stem cells are introduced into a
+                    patient's body to replace damaged or diseased cells. These cells can develop into different types of
+                    blood cells and help rebuild a healthy immune system.</p>
+            </details>
+
+            <details>
+                <summary>Who is eligible for stem cell transplantation?</summary>
+                <p>Eligibility depends on various factors including age, overall health condition, type of disease, and
+                    stage of condition. Common conditions treated include leukemia, lymphoma, multiple myeloma, and
+                    certain immune system disorders.</p>
+            </details>
+
+            <details>
+                <summary>What are the different types of stem cell transplants?</summary>
+                <p>There are two main types: autologous (using your own stem cells) and allogeneic (using stem cells
+                    from a donor). The choice depends on your condition, availability of donors, and other medical
+                    factors.</p>
+            </details>
+
+            <details>
+                <summary>What is the success rate of stem cell transplantation?</summary>
+                <p>Success rates vary depending on factors like disease type, stage, age, and overall health. Modern
+                    transplants have shown significant improvements in outcomes, with many patients achieving long-term
+                    remission.</p>
+            </details>
+
+            <details>
+                <summary>How long is the recovery period?</summary>
+                <p>Recovery typically takes 3-12 months, though this varies by individual. The first 30-100 days are
+                    most critical. During this time, patients need close monitoring and follow specific care guidelines
+                    to prevent complications.</p>
+            </details>
+        </div>
+    </main>
+    <script>
+        // Hamburger menu functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener("click", function() {
+                    hamburger.classList.toggle("active");
+                    navLinks.classList.toggle("active");
+                    document.body.classList.toggle("menu-open");
+                });
+
+                // Close menu when clicking a link
+                navLinks.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", function() {
+                        hamburger.classList.remove("active");
+                        navLinks.classList.remove("active");
+                        document.body.classList.remove("menu-open");
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener("click", function(e) {
+                    if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains("active")) {
+                        hamburger.classList.remove("active");
+                        navLinks.classList.remove("active");
+                        document.body.classList.remove("menu-open");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
