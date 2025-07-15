@@ -61,7 +61,8 @@ Every 5 minutes, someone is diagnosed with a blood-related disorder that may req
 **Md Absaar**  
 📧 Email: [imabsaar007@gmail.com](mailto:imabsaar007@gmail.com)  
 🌍 Location: Kolkata, India  
-🔗 Portfolio: *(Add link if available)*
+🔗 Portfolio: absaar-portfolio.netlify.app
+
 
 ---
 
